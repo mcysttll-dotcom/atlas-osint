@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0a1220">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Atlas OSINT">
+<meta name="description" content="Espace personnel de recherche de sources publiques, conçu pour mobile.">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icon.svg">
+<link rel="stylesheet" href="style.css">
+<title>Atlas OSINT</title>
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="#" aria-label="Atlas accueil"><span class="logo">A</span><span><b>ATLAS</b><small>OSINT WORKSPACE</small></span></a>
+  <span class="local-pill"><i></i> PUBLIC</span>
+</header>
+<main>
+  <section id="searchPage" class="page active">
+    <div class="intro">
+      <div class="eyebrow">OPEN-SOURCE INTELLIGENCE</div>
+      <h1>Explorer les<br><em>sources publiques.</em></h1>
+      <p>Recherche, vérifie et organise des pistes publiques depuis ton iPhone.</p>
+    </div>
+    <form id="searchForm" class="search-panel">
+      <label for="kind">TYPE DE RECHERCHE</label>
+      <div class="select-wrap"><select id="kind">
+        <option value="name">Nom / prénom</option>
+        <option value="username">Pseudonyme</option>
+        <option value="email">Adresse e-mail</option>
+        <option value="domain">Nom de domaine</option>
+        <option value="url">URL publique</option>
+      </select><span>⌄</span></div>
+      <label for="query">IDENTIFIANT</label>
+      <input id="query" maxlength="250" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Saisis ta recherche…" required>
+      <button class="primary" type="submit">Lancer la recherche <span>↗</span></button>
+      <p class="micro">Les recherches web ouvrent des sources externes. Aucun résultat n'est inventé.</p>
+    </form>
+    <div id="error" class="error hidden" role="status"></div>
+    <section id="resultsSection" class="hidden">
+      <div class="section-title"><div><div class="eyebrow">RÉSULTATS</div><h2 id="resultsTitle">Pistes de recherche</h2></div><button id="exportBtn" class="icon-btn" aria-label="Exporter le rapport">⇩</button></div>
+      <div class="warning">ⓘ Une correspondance ne prouve pas l'identité d'une personne. Vérifie chaque source.</div>
+      <div id="results" class="results"></div>
+    </section>
+    <section class="quicklinks">
+      <div class="eyebrow">ACCÈS RAPIDE</div>
+      <button data-kind="domain"><span class="quick-icon">◎</span><span><b>Analyser un domaine</b><small>DNS et données d'enregistrement</small></span><span class="chevron">›</span></button>
+      <button data-kind="email"><span class="quick-icon">@</span><span><b>Vérifier un e-mail</b><small>Format, domaine et mentions publiques</small></span><span class="chevron">›</span></button>
+      <button data-kind="username"><span class="quick-icon">⌕</span><span><b>Rechercher un pseudonyme</b><small>Moteurs de recherche et profils publics</small></span><span class="chevron">›</span></button>
+    </section>
+  </section>
+  <section id="historyPage" class="page">
+    <div class="eyebrow">ARCHIVE LOCALE</div><h1>Historique</h1>
+    <p class="subtext">Les recherches récentes sont conservées sur cet appareil dans ce navigateur.</p>
+    <button id="clearHistory" class="text-danger">Effacer l’historique</button>
+    <div id="history" class="history"></div>
+  </section>
+  <section id="aboutPage" class="page">
+    <div class="eyebrow">À PROPOS</div><h1>Simple.<br><em>Traçable.</em></h1>
+    <div class="about-card"><span class="quick-icon">✓</span><div><b>Sources vérifiables</b><p>Chaque piste propose un lien externe pour que tu puisses examiner la source originale.</p></div></div>
+    <div class="about-card"><span class="quick-icon">⌁</span><div><b>Pas de certitudes automatiques</b><p>Un nom ou un pseudonyme partagé ne suffit pas à relier des comptes à une personne.</p></div></div>
+    <div class="about-card"><span class="quick-icon">▣</span><div><b>Stockage local</b><p>L’historique de cette version reste dans le stockage du navigateur. Efface-le depuis l’onglet Historique ou les réglages de Safari.</p></div></div>
+    <div class="warning">Cette version mobile est un prototype côté navigateur. Elle ne collecte pas automatiquement les pages de résultats des moteurs de recherche. Les liens externes nécessitent Internet.</div>
+  </section>
+</main>
+<nav class="tabbar" aria-label="Navigation principale">
+  <button class="tab active" data-page="searchPage"><span>⌕</span><small>Recherche</small></button>
+  <button class="tab" data-page="historyPage"><span>◷</span><small>Historique</small></button>
+  <button class="tab" data-page="aboutPage"><span>◇</span><small>À propos</small></button>
+</nav>
+<script src="app.js"></script>
+</body></html>
